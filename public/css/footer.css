@@ -1,0 +1,19 @@
+.page-footer a {
+    color: #E7746F;
+    text-transform: uppercase;
+}
+
+.page-footer h1, .page-footer h2, .page-footer h3, .page-footer h4, .page-footer h5, .page-footer h6 {
+    letter-spacing: 5px;
+    margin: 5px 0 5px;
+    color: #222;
+}
+
+.page-footer p {
+    color: #666;
+}
+.page-footer h6 {
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}

@@ -1,0 +1,409 @@
+/* @import url(http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800); */
+
+@font-face {
+	font-family: Raleway;
+	src:  url(../fonts/Raleway-Black.ttf);
+}
+
+@font-face {
+	font-family: 'PF Centro Sans Pro Regular';
+	src: url(../fonts/PFCentroSansPro-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
+} 
+
+@font-face { 
+	font-family: 'PFCentroSansPro-BoldItalic';  
+	src: url(../fonts/6b29eef7354d85c1eb5d9bd6fe59fa2f.woff);
+}
+
+
+body {
+	/*font: 300 14px/1.8 'Raleway', sans-serif;*/
+	color: #666;
+	overflow-x: hidden;
+	font-family: 'PF Centro Sans Pro Regular';
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: #E7746F;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #999;
+}
+
+h1 {
+	font-size: 2.2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font: 700 40px/1.2 'PF Centro Sans Pro Regular', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	margin: 5px 0 5px;
+	color: #222;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 0 0 30px;
+}
+
+h3 {
+	font-size: 13px;
+	letter-spacing: 1px;
+	margin: 0 0 5px;
+}
+
+h4 {
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+h5 {
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+h6 {
+	font-size: 11px;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+
+
+
+/* ---------------------------------------------- /*
+ * Home
+/* ---------------------------------------------- */
+
+#home {
+	background-image: url("../images/cover.jpg");
+	background-color: #222;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+		 -o-background-size: cover;
+			background-size: cover;
+    padding: 0;
+    position: static;
+}
+
+.home-overlay {
+    background-color: rgba(44, 62, 80, 0.3);
+    background-image: url("../images/pattern.png");
+    background-repeat: repeat;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.intro {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	text-align: center;
+	-webkit-transform: translate(0%, -50%);
+	   -moz-transform: translate(0%, -50%);
+		-ms-transform: translate(0%, -50%);
+		 -o-transform: translate(0%, -50%);
+			transform: translate(0%, -50%);
+	padding: 0 15px;
+}
+
+.intro h1{
+	font-weight: 800;
+	text-transform: none;
+	/*font-family: Lobster, cursive;*/
+	font-family: 'PFCentroSansPro-BoldItalic';
+}
+
+.start {
+	font-family: Raleway, "Times New Roman", Times, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	text-transform: none;
+	margin: 15px 0;
+}
+
+
+/* Blokcs */
+
+.pfblock-image,
+.pfblock-image h1,
+.pfblock-image h2,
+.pfblock-image h3,
+.pfblock-image h4,
+.pfblock-image h5,
+.pfblock-image h6 {
+	color: #fff;
+}
+
+.pfblock {
+	padding: 120px 0 100px;
+}
+
+.pfblock-gray {
+	background: #f5f5f5;
+}
+
+.pfblock-image {
+	padding: 0;
+}
+.pfblock-title{
+    font-weight: 800;
+}
+
+.pfblock-subtitle {
+	font-family: Raleway, "Times New Roman", Times, sans-serif;
+	font-style: normal;
+	font-size: 18px;
+}
+
+.pfblock-line {
+	background: rgba(135, 135, 135, 0.5);
+	width: 100px;
+	height: 1px;
+	margin: 30px auto;
+}
+
+.pfblock-header {
+	text-align: center;
+	margin: 0 0 60px;
+}
+
+.pfblock-header-left {
+	text-align: left;
+}
+
+.pfblock-header-left .pfblock-line {
+	width: inherit;
+	margin: 30px 0;
+}
+
+/* ---------------------------------------------- /*
+ *Scroll Down
+/* ---------------------------------------------- */
+
+.scroll-down {
+	position: absolute;
+	left: 50%;
+	bottom: 40px;
+	/* border: 2px solid #fff; */
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	margin-left: -15px;
+	display: block;
+	z-index: 10;
+    text-align: center;
+}
+
+.scroll-down span{
+    position: relative;
+    color: #fff;
+    -webkit-animation-name: drop;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	animation-name: drop;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+
+@-webkit-keyframes drop	{
+	0%   { top:0px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+
+@keyframes drop	{
+	0%   { top:-5px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+
+/* ---------------------------------------------- /*
+ * Servise
+/* ---------------------------------------------- */
+
+.iconbox {
+	background: #fff;
+	border-bottom: 1px solid #d4d4d4;
+	text-align: center;
+	padding: 40px 20px;
+	margin: 0 0 20px;
+	min-height: 250px;
+}
+
+.iconbox-icon {
+	margin: 0 0 15px;
+	font-size: 32px;
+	color: #222;
+}
+
+.iconbox-title {
+	margin: 0 0 15px;
+	padding: 0;
+}
+
+/* ---------------------------------------------- /*
+ * Reset border-radius
+/* ---------------------------------------------- */
+
+.btn,
+.iconbox,
+.progress,
+#filter li,
+.scroll-up a,
+.form-control,
+.input-group-addon {
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+		 -o-border-radius: 3px;
+			border-radius: 3px;
+}
+
+
+/*section 2*/
+
+.resume-container .left .resume-description strong {
+  margin-left: 10px; }
+.resume-container .right .resume-description strong {
+  margin-right: 10px; }
+.resume-container .left {
+  text-align: right;
+  border-right: #d2d2d2 1px solid; }
+  .resume-container .left h3 {
+    text-align: right; }
+.resume-container .right {
+  text-align: left; }
+  .resume-container .right h3 {
+    text-align: left; }
+.resume-container h3 {
+ 	font-size: 16px;
+  margin-top: 30px; 
+}
+.resume-container .resume-title {
+  font-weight: 600;
+  display: inline-block;
+  padding: 0 15px;}
+.resume-container strong {
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase; }
+.resume-container .resume-description {
+  font-style: italic; }
+.resume-container .resume-item {
+  margin-bottom: 40px; }
+  .resume-container .resume-item p {
+    margin-top: 10px; }
+  .resume-container .resume-item:last-child {
+    margin-bottom: 0; }
+    .resume-container .resume-item:last-child p {
+      margin-bottom: 0; }
+
+.resume-icon {
+  font-size: 40px;
+  margin-bottom: 35px; }
+  .resume-item .resume-title {
+    display: inline-block;
+    padding: 0 0; 
+    font-size: 16px;
+	}
+
+
+/* Teacher */
+.teacher {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.teacher-foto img{
+	width: 200px;
+    height: auto;
+    zoom: 1;
+    border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	object-fit: cover;
+}
+
+.teacher>.teacher-name {
+	margin-top: 20px;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.teacher>.teacher-name>.fio {
+	color: #ff8a00;
+	text-transform: uppercase;
+}
+.teacher>.teacher-description {
+	padding: 20px;
+}
+
+#map ul>li {
+	list-style-type:none;
+}
+
+#map a {
+	color: #2353d8;
+}
+
+.img-thumbnail {
+	height: 170px;
+	object-fit: cover;
+}
+
+@media (max-width: 575px) {
+	.start {
+		font-size: 16px;
+	}
+	.intro h1 {
+		font-size: 24px;
+	}
+	.resume-container h3,
+	.resume-item {
+		text-align: left;
+	}
+	.resume-icon, .resume-container h3, .left, .left h3, #plan h3 {
+		text-align: center;
+	}
+	#plan h3 {
+		margin-top: 50px;
+		margin-bottom: 10px;
+		font-size: 14px;
+	}
+	#plan .resume-container .left {
+ 		border-right: none; 
+ 	}
+	#portfolio-grid .portfolio-item {
+		margin-left: 0px;
+	}
+}
+
+@media (max-width: 992px) {
+	h2 {
+		font-size: 20px;
+	}
+}
