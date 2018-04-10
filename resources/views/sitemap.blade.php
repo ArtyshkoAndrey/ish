@@ -9,7 +9,7 @@
     @foreach ($posts as $post)
     <url>
         <loc>{{url('post') . "/" . $post->slug }}</loc>
-        <lastmod>{{ Carbon\Carbon::parse($post->cteated_at)->format('d.m.Y') }}</lastmod>
+        <lastmod>{{ Carbon\Carbon::parse($post->cteated_at)->format('Y-m-d') }}</lastmod>
         <changefreq>month</changefreq>
         <priority>0.8</priority>
     </url>
@@ -17,7 +17,7 @@
         @foreach ($categories as $category)
             <url>
                 <loc>{{url('post/category') . "/" . $category->slug }}</loc>
-                <lastmod>{{ Carbon\Carbon::parse($category->cteated_at)->format('d.m.Y') }}</lastmod>
+                <lastmod>{{ Carbon\Carbon::parse($category->cteated_at)->format('Y-m-d') }}</lastmod>
                 <changefreq>month</changefreq>
                 <priority>0.6</priority>
             </url>
@@ -25,7 +25,7 @@
         @foreach ($tags as $tag)
             <url>
                 <loc>{{url('post/tag') . "/" . $tag->slug }}</loc>
-                <lastmod>{{ Carbon\Carbon::parse($tag->cteated_at)->format('d.m.Y') }}</lastmod>
+                <lastmod>{{ Carbon\Carbon::parse($tag->cteated_at)->format('Y-m-d') }}</lastmod>
                 <changefreq>month</changefreq>
                 <priority>0.6</priority>
             </url>
