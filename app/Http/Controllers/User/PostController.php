@@ -22,8 +22,8 @@ class PostController extends Controller
             $categories = category::all();
             $tags = tag::all();
             $article->addView();
-            $next_post = post::where('id', '>', $article->id)->orderBy('id', 'asc')->first();
-            $prev_post = post::where('id', '<', $article->id)->orderBy('id', 'desc')->first();
+            $next_post = post::where('id', '<', $article->id)->orderBy('id', 'desc')->first();
+            $prev_post = post::where('id', '>', $article->id)->orderBy('id', 'asc')->first();
             if ($next_post == null) {
                 $next_post = $article;
             }
