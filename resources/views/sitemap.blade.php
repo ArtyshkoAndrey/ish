@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>{{url('') . "/" }}</loc>
-        <lastmod>3.10.2018</lastmod>
+        <lastmod>2018-04-11</lastmod>
         <changefreq>month</changefreq>
         <priority>1</priority>
     </url>

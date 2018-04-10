@@ -23,6 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{asset('favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
+    <meta name="google-site-verification" content="C-LHN17I6Zn6ZIzFsUyPo5BQex0Qj4SA1ysU2JSBnH8" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
