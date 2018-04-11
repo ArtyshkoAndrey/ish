@@ -1,6 +1,6 @@
  <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Версия</b> 0.0.1
+      <b>Версия</b> 0.0.2
     </div>
     <strong>Copyright &copy; 2017-{{ Carbon\carbon::now()->year }} <a href="{{route('index')}}">Инженерная школа</a>.</strong>
     <!-- jQuery UI 1.11.4 -->

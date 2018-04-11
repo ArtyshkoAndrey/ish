@@ -25,7 +25,6 @@
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Главная страница</h3>
-        <a class='col-lg-offset-5 btn btn-success' href="{{ route('header.edit') }}">Изменить данные</a>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i></button>
@@ -33,31 +32,54 @@
             <i class="fa fa-times"></i></button>
         </div>
       </div>
+      
       <div class="box-body">
-        <div class="box">
-          <div class="box-header">
-            <h3 class="box-title">Шапка</h3>
-          </div>
-          <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Поле1</th>
-                  <th>Поле2</th>
-                  <th>Поле3</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  @foreach($headers as $header)
-                    <td>{{$header->content}}</td>
-                  @endforeach
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Таблица всех записей</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Имя</th>
+                                    <th>Заголовок</th>
+                                    <th>Подзаголовок</th>
+                                    {{--@can('course.update',Auth::user())--}}
+                                        <th>Редактировать</th>
+                                    {{--@endcan--}}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($headers as $header)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $header->name }}</td>
+                                        <td>{{ $header->title }}</td>
+                                        <td>{{ $header->subtitle }}</td>
+                                        <td><a href="{{ route('header.edit', $header->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Имя</th>
+                                    <th>Заголовок</th>
+                                    <th>Подзаголовок</th>
+                                    {{--@can('course.update',Auth::user())--}}
+                                        <th>Редактировать</th>
+                                    {{--@endcan--}}
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
       <!-- /.box-body -->
       <div class="box-footer">
       

@@ -54,7 +54,7 @@
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('images/logo.png')}}" alt="" class="img-fluid" style="height:40px;"></a>
+            <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('upload/header/' . $headers->logo)}}" alt="" class="img-fluid" style="height:40px;"></a>
             
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto">

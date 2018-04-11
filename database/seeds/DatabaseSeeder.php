@@ -13,16 +13,9 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::table('headers')->insert([
-            'name' => 'input1',
-            'content' => 'Инженерная школа МАОУ "КУГ № 1 - Универс"',
-        ]);
-        DB::table('headers')->insert([
-            'name' => 'input2',
-            'content' => '#ИнженернаяШкола',
-        ]);
-        DB::table('headers')->insert([
-            'name' => 'input3',
-            'content' => 'Инженерное образование - приоритет - качество - перспектива.',
+            'name' => '#ИнженернаяШкола',
+            'title' => 'Инженерная школа МАОУ "КУГ № 1 - Универс"',
+            'subtitle' => 'Инженерное образование - приоритет - качество - перспектива.'
         ]);
     }
 }

@@ -6,12 +6,12 @@
 	  <!-- Content Header (Page header) -->
 	  <section class="content-header">
 	    <h1>
-	      Редактирование тега
+	      Редактирование шапки
       	<small>Элемент расширенной формы</small>
 	    </h1>
 	    <ol class="breadcrumb">
 	      <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> Главная</a></li>
-      	<li><a href="{ route('tag.index') }}" >Теги</a></li>
+      	<li><a href="{ route('header.index') }}" >Шапка</a></li>
 	      <li class="active">Редактирование</li>
 	    </ol>
 	  </section>
@@ -29,23 +29,31 @@
 	          @include('includes.messages')
 	          <!-- /.box-header -->
 	          <!-- form start -->
-	          <form role="form" action="{{ route('header.update') }}" method="post">
+	          <form role="form" action="{{ route('header.update', $header->id) }}" method="post" enctype="multipart/form-data">
 	          {{ csrf_field() }}
 	          {{ method_field('PUT') }}
 	            <div class="box-body">
 	            <div class="col-lg-offset-3 col-lg-6">
 					<div class="form-group">
-						<label for="input1">Поле 1</label>
-						<input type="text" class="form-control" id="input1" name="input1" placeholder="Поле 1" value="{{$headers[0]['content']}}">
+						<label for="input1">Наименование</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Имя" value="{{$header->name}}">
 					</div>
 
 					<div class="form-group">
-						<label for="input2">Поле 2</label>
-						<input type="text" class="form-control" id="input2" name="input2" placeholder="Поле 2" value="{{$headers[1]['content']}}">
+						<label for="input2">Заголвок</label>
+						<input type="text" class="form-control" id="title" name="title" placeholder="Заголовок" value="{{$header->title}}">
 					</div>
 					<div class="form-group">
-						<label for="input3">Поле 3</label>
-						<input type="text" class="form-control" id="input3" name="input3" placeholder="Поле 3" value="{{$headers[2]['content']}}">
+						<label for="input3">Подзаголовок</label>
+						<input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Подзаголовок" value="{{$header->subtitle}}">
+					</div>
+					<div class="form-group">
+						<label for="logo">Лого</label>
+						<input type="file" name="logo" id="logo">
+					</div>
+					<div class="form-group">
+						<label for="background_img">Задний фон</label>
+						<input type="file" name="background_img" id="background_img">
 					</div>
 	            <div class="form-group">
 	              <button type="submit" class="btn btn-primary">Редактировать</button>

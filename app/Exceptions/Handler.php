@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Model\user\Header;
 
 class Handler extends ExceptionHandler
 {
@@ -47,11 +48,10 @@ class Handler extends ExceptionHandler
         if ($this->isHttpException($e)) {
 
             $statusCode = $e->getStatusCode();
-
+            $headers=Header::first();
             switch ($statusCode) {
-
                 case '404':
-                    return response()->view('layouts/404');
+                    return response()->view('layouts/404', compact('headers'));
             }
         }
         return parent::render($request, $e);

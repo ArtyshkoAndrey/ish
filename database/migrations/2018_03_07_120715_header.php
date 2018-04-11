@@ -16,7 +16,10 @@ class Header extends Migration
         Schema::create('headers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('content');
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('logo');
+            $table->string('background-img');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ use App\Model\user\about;
 class HomeController extends Controller {
 
     public function index() {
-        $headers=Header::all();
+        $headers=$this->headers;
         $courses=course::all();
         $plansEight=plan::where('class', 8)->get();
         $plansTen=plan::where('class', 10)->get();
@@ -38,8 +38,9 @@ class HomeController extends Controller {
         $tags=tag::all();
         $links=$this->links;
         $categories = category::all();
+        $headers=$this->headers;
         $top_post = post::orderby('id', 'desc')->where('status', 1)->where('top', 1)->first();
-    	return view('user.news',compact('articles', 'aside_articles', 'categories', 'tags', 'top_post', 'links'));
+    	return view('user.news',compact('articles', 'aside_articles', 'categories', 'tags', 'top_post', 'links', 'headers'));
     }
     public function tag(tag $tag)
     {
@@ -47,18 +48,20 @@ class HomeController extends Controller {
         $aside_articles = post::where('status', 1)->orderBy('created_at', 'DESC')->paginate(3);
         $tags = tag::all();
         $links=$this->links;
+        $headers=$this->headers;
         $categories = category::all();
-        return view('user.news', compact('articles', 'aside_articles', 'categories', 'tags', 'links'));
+        return view('user.news', compact('articles', 'aside_articles', 'categories', 'tags', 'links', 'headers'));
     }
 
     public function category(category $category)
     {
+        $headers=$this->headers;
         $articles = $category->posts();
         $aside_articles = post::where('status',1)->orderBy('created_at','DESC')->paginate(3);
         $tags=tag::all();
         $links=$this->links;
         $categories = category::all();
-        return view('user.news',compact('articles', 'aside_articles', 'categories', 'tags', 'links'));
+        return view('user.news',compact('articles', 'aside_articles', 'categories', 'tags', 'links', 'headers'));
     }
 
     public function search(request $request) {
@@ -68,7 +71,8 @@ class HomeController extends Controller {
             $tags = tag::all();
             $categories = category::all();
             $links=$this->links;
-            return view('user.news', compact('articles', 'aside_articles', 'categories', 'tags', 'links'));
+            $headers=$this->headers;
+            return view('user.news', compact('articles', 'aside_articles', 'categories', 'tags', 'links', 'headers'));
         }
         else {
             return redirect('/news');

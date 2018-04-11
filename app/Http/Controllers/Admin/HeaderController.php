@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Model\admin\Permission;
 use App\Model\user\Header;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image as ImageInt;
+use Illuminate\Contracts\Validation\Factory;
 
 class HeaderController extends Controller
 {
@@ -68,28 +71,51 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $headers= Header::all();
-        return view('admin.header.edit',compact('headers'));
+        $header=Header::where('id',$id)->first();
+        return view('admin.header.edit',compact('header'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-        $header=Header::find(1);
-        $header->content=$request->input1;
-        $header->save();
-        $header=Header::find(2);
-        $header->content=$request->input2;
-        $header->save();
-        $header=Header::find(3);
-        $header->content=$request->input3;
+    public function update(Request $request, $id) {
+
+        $header=Header::where('id',$id)->first();
+        $header->name=$request->name;
+        $header->title=$request->title;
+        $header->subtitle=$request->subtitle;
+
+        if ($request->hasFile('logo')) {
+            $path =  public_path().'/upload/header/';
+            $file = $request->file('logo');
+            $filename_1 = 'logo.' . $file->getClientOriginalExtension() ?: 'jpg';
+            $img = ImageInt::make($file);
+            $img->save($path . $filename_1);
+        }else{
+            $temp=Header::where('id', $id)->first();
+            $filename_1=$temp->logo;
+            unset($temp);
+        }
+
+        if ( $request->hasFile('background_img') ) {
+            $path =  public_path().'/upload/header/';
+            $file = $request->file('background_img');
+            $filename_2 = 'background_img.' . $file->getClientOriginalExtension() ?: 'jpg';
+            $img = ImageInt::make($file);
+            $img->save($path . $filename_2);
+        }else{
+            $temp=Header::where('id', $id)->first();
+            $filename_2=$temp->background_img;
+            unset($temp);
+        }
+        $header->logo=$filename_1;
+        $header->background_img=$filename_2;
         $header->save();
 
         return redirect(route('header.index'));

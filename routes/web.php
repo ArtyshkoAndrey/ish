@@ -33,9 +33,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
 	Route::post('admin-login', 'Auth\LoginController@login');
     //Header
-	Route::get('admin/header', 'HeaderController@index')->name('header.index');
-    Route::get('admin/header/edit', 'HeaderController@edit')->name('header.edit');
-    Route::put('admin/header/update', 'HeaderController@update')->name('header.update');
+	Route::resource('admin/header', 'HeaderController');
     //Sitemap
     Route::get('/sitemap', 'SitemapController@index')->name('sitemap');
     //Courses Routes

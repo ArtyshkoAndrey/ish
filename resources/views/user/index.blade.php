@@ -14,12 +14,12 @@
         <div class="home-overlay"></div>
         <div class="intro">
             <div class="start">
-                 {{$headers[0]['content']}}
+                 {{$headers->title}}
             </div>
             <h1>
-                {{$headers[1]['content']}}
+                {{$headers->name}}
             </h1>
-            <div class="start">{{$headers[2]['content']}}</div>
+            <div class="start">{{$headers->subtitle}}</div>
         </div>
     
         <a href="#services">
