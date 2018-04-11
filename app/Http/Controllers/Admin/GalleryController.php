@@ -20,7 +20,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries=gallery::all();
+        $galleries = gallery::all();
         return view('admin.gallery.show',compact('galleries'));
     }
 
@@ -43,16 +43,16 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'photo' => 'required',
+            'title'     => 'required',
+            'photo'     => 'required',
             'posted_by' => 'required',
-            'status' => 'required',
+            'status'    => 'required',
         ]);
         if ($request->hasFile('photo')) {
-            $path =  public_path().'/upload/gallery/';
-            $file = $request->file('photo');
+            $path     = public_path().'/upload/gallery/';
+            $file     = $request->file('photo');
             $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img      = ImageInt::make($file);
             $img->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -65,10 +65,10 @@ class GalleryController extends Controller
         }else{
             return 'No';
         }
-        $gallery = new gallery;
-        $gallery->photo = $filename;
-        $gallery->title = $request->title;
-        $gallery->status = $request->status;
+        $gallery            = new gallery;
+        $gallery->photo     = $filename;
+        $gallery->title     = $request->title;
+        $gallery->status    = $request->status;
         $gallery->posted_by = $request->posted_by;
         $gallery->save();
         return redirect(route('gallery.index'));
@@ -107,14 +107,14 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title'=>'required',
+            'title' => 'required',
         ]);
 
         if ($request->hasFile('photo')) {
-            $path =  public_path().'/upload/gallery/';
-            $file = $request->file('photo');
+            $path     = public_path().'/upload/gallery/';
+            $file     = $request->file('photo');
             $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img      = ImageInt::make($file);
             $img->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -125,15 +125,15 @@ class GalleryController extends Controller
             });
             $img->save($path . 'miniature/' . $filename);
         }else{
-            $temp=gallery::where('id', $id)->first();
-            $filename=$temp->photo;
+            $temp     = gallery::where('id', $id)->first();
+            $filename = $temp->photo;
             unset($temp);
         }
 
-        $gallery = gallery::find($id);
-        $gallery->title = $request->title;
-        $gallery->status = $request->status;
-        $gallery->photo = $filename;
+        $gallery            = gallery::find($id);
+        $gallery->title     = $request->title;
+        $gallery->status    = $request->status;
+        $gallery->photo     = $filename;
         $gallery->posted_by = $request->posted_by;
         $gallery->save();
 
@@ -148,7 +148,7 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        $gallery=gallery::where('id',$id)->first();
+        $gallery = gallery::where('id',$id)->first();
         if(file_exists(public_path().'/upload/gallery/original/'.$gallery->photo))
             unlink(public_path().'/upload/gallery/original/'.$gallery->photo);
         if(file_exists(public_path().'/upload/gallery/miniature/'.$gallery->photo))

@@ -56,9 +56,9 @@ class LoginController extends Controller
     {
         $admin = admin::where('email',$request->email)->first();
         if ($admin->status == 0) {
-            return ['email'=>'inactive','password'=>'You are not an active person, please contact Admin'];
+            return ['email' => 'inactive','password' => 'You are not an active person, please contact Admin'];
         }else{
-            return ['email'=>$request->email,'password'=>$request->password,'status'=>1];
+            return ['email' => $request->email,'password' => $request->password,'status' => 1];
         }
     }
 

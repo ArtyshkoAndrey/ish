@@ -42,8 +42,8 @@ class PostController extends Controller
     public function create()
     {
         if (Auth::user()->can('posts.create')) {
-           $tags =tag::all();
-            $categories =category::all();
+            $tags        = tag::all();
+            $categories = category::all();
             return view('admin.post.post',compact('tags','categories'));
         }
         return redirect(route('admin.home'));
@@ -59,19 +59,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'subtitle' => 'required',
-            'body' => 'required',
-            'image' => 'required',
-            'posted_by' => 'required',
-            'meta_keywords' => 'required',
+            'title'            => 'required',
+            'subtitle'         => 'required',
+            'body'             => 'required',
+            'image'            => 'required',
+            'posted_by'        => 'required',
+            'meta_keywords'    => 'required',
             'meta_description' => 'required',
             ]);
         if ($request->hasFile('image')) {
-            $path =  public_path().'/upload/post_header/';
-            $file = $request->file('image');
+            $path     = public_path().'/upload/post_header/';
+            $file     = $request->file('image');
             $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img      = ImageInt::make($file);
             $img->resize(null, 500, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -79,17 +79,17 @@ class PostController extends Controller
         }else{
             return 'No';
         }
-        $post = new post;
-        $post->image = $filename;
-        $post->title = $request->title;
-        $post->subtitle = $request->subtitle;
-        $post->slug = $request->slug;
-        $post->body = $request->body;
-        $post->status = $request->status;
-        $post->top = $request->top;
-        $post->posted_by = $request->posted_by;
+        $post                   = new post;
+        $post->image            = $filename;
+        $post->title            = $request->title;
+        $post->subtitle         = $request->subtitle;
+        $post->slug             = $request->slug;
+        $post->body             = $request->body;
+        $post->status           = $request->status;
+        $post->top              = $request->top;
+        $post->posted_by        = $request->posted_by;
         $post->meta_description = $request->meta_description;
-        $post->meta_keywords = $request->meta_keywords;
+        $post->meta_keywords    = $request->meta_keywords;
         $post->save();
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
@@ -117,9 +117,9 @@ class PostController extends Controller
     public function edit($id)
     {
         if (Auth::user()->can('posts.update')) {
-            $post = post::with('tags','categories')->where('id',$id)->first();
-            $tags =tag::all();
-            $categories =category::all();
+            $post       = post::with('tags','categories')->where('id',$id)->first();
+            $tags       = tag::all();
+            $categories = category::all();
             return view('admin.post.edit',compact('tags','categories','post'));
         }
         return redirect(route('admin.home'));
@@ -135,35 +135,35 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'subtitle' => 'required',
-            'body' => 'required',
-            'meta_keywords' => 'required',
+            'title'            => 'required',
+            'subtitle'         => 'required',
+            'body'             => 'required',
+            'meta_keywords'    => 'required',
             'meta_description' => 'required',
             ]);
         if ($request->hasFile('image')) {
-            $path =  public_path().'/upload/post_header/';
-            $file = $request->file('image');
+            $path     = public_path().'/upload/post_header/';
+            $file     = $request->file('image');
             $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img      = ImageInt::make($file);
             $img->resize(null, 500, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path . $filename);
         }else{
-            $temp=post::where('id', $id)->first();
-            $filename=$temp->image;
+            $temp     = post::where('id', $id)->first();
+            $filename = $temp->image;
             unset($temp);
         }
-        $post = post::find($id);
-        $post->image = $filename;
-        $post->title = $request->title;
-        $post->subtitle = $request->subtitle;
-        $post->body = $request->body;
-        $post->status = $request->status;
-        $post->top = $request->top;
+        $post                   = post::find($id);
+        $post->image            = $filename;
+        $post->title            = $request->title;
+        $post->subtitle         = $request->subtitle;
+        $post->body             = $request->body;
+        $post->status           = $request->status;
+        $post->top              = $request->top;
         $post->meta_description = $request->meta_description;
-        $post->meta_keywords = $request->meta_keywords;
+        $post->meta_keywords    = $request->meta_keywords;
         $post->tags()->sync($request->tags);
         $post->categories()->sync($request->categories);
         $post->save();
@@ -180,7 +180,7 @@ class PostController extends Controller
     public function destroy($id)
     {
 
-        $post=post::where('id',$id)->first();
+        $post = post::where('id',$id)->first();
         if(file_exists(public_path().'/upload/post_header/'.$post->image))
             unlink(public_path().'/upload/post_header/'.$post->image);
         $post->delete();
@@ -198,15 +198,15 @@ class PostController extends Controller
         if ($v->fails()) {
             return response(
                 "<script>
-                window.parent.CKEDITOR.tools.callFunction({$funcNum}, '', '{$v->errors()->first()}');
-            </script>"
+                    window.parent.CKEDITOR.tools.callFunction({$funcNum}, '', '{$v->errors()->first()}');
+                </script>"
             );
         }
 
-        $path =  public_path().'/upload/post/';
-        $file = $request->file('upload');
+        $path     = public_path().'/upload/post/';
+        $file     = $request->file('upload');
         $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-        $img = ImageInt::make($file);
+        $img      = ImageInt::make($file);
         $img->resize(null, 500, function ($constraint) {
             $constraint->aspectRatio();
         });
@@ -215,8 +215,8 @@ class PostController extends Controller
 
         return response(
             "<script>
-            window.parent.CKEDITOR.tools.callFunction({$funcNum}, '{$url}', 'Изображение успешно загружено');
-        </script>"
+                window.parent.CKEDITOR.tools.callFunction({$funcNum}, '{$url}', 'Изображение успешно загружено');
+            </script>"
         );
     }
 }

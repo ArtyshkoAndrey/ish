@@ -25,17 +25,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts=post::where('status', 1)->get();
-        $count_posts=$posts->count();
-        $viewed_posts=0;
+        $posts        = post::where('status', 1)->get();
+        $count_posts  = $posts->count();
+        $viewed_posts = 0;
         foreach ($posts as $post) {
-            $viewed_posts+=$post->viewed;
+            $viewed_posts += $post->viewed;
         }
-        $popular_post=post::orderBy('viewed', 'desc')->first();
+        $popular_post = post::orderBy('viewed', 'desc')->first();
 
         $url = 'https://api-metrika.yandex.ru/stat/v1/data';
         $params = [
-            'id'         => '48277403',
+            'id'          => '48277403',
             'oauth_token' => 'AQAAAAAS8A4OAATXkrURU0UShUYyhXsxNBRYanA',
             'metrics'     => 'ym:s:visits,ym:s:pageviews,ym:s:users',
             'dimensions'  => 'ym:s:date',
@@ -46,9 +46,9 @@ class HomeController extends Controller
         $json = file_get_contents( $url . '?' . http_build_query($params) );
         $data = json_decode($json, true)['data'];
         if($posts == null) {
-            $posts=0;
-            $count_posts=0;
-            $viewed_posts=0;
+            $posts        = 0;
+            $count_posts  = 0;
+            $viewed_posts = 0;
         }
         if($data == null) {
             $highcharts = false;
@@ -58,15 +58,15 @@ class HomeController extends Controller
         else {
             $tmpdata = [];
             foreach ($data as $item) {
-                $tmpdata['visits'][] = $item['metrics'][0];
-                $tmpdata['pageviews'][] = $item['metrics'][1];
-                $tmpdata['users'][] = $item['metrics'][2];
+                $tmpdata['visits'][]     = $item['metrics'][0];
+                $tmpdata['pageviews'][]  = $item['metrics'][1];
+                $tmpdata['users'][]      = $item['metrics'][2];
                 $tmpdata['categories'][] = $item['dimensions'][0]['name'];
             }
             $categories = json_encode($tmpdata['categories'], JSON_UNESCAPED_UNICODE);
             $series = json_encode([
-                ['name' => 'Визиты', 'data' => $tmpdata['visits']],
-                ['name' => 'Просмотры', 'data' => $tmpdata['pageviews']],
+                ['name' => 'Визиты', 'data'     => $tmpdata['visits']],
+                ['name' => 'Просмотры', 'data'  => $tmpdata['pageviews']],
                 ['name' => 'Посетители', 'data' => $tmpdata['users']]
             ], JSON_UNESCAPED_UNICODE);
             $highcharts = true;

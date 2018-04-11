@@ -25,7 +25,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = about::all();
+        $about          = about::all();
         return view('admin.about.show',compact('about'));
     }
 
@@ -69,7 +69,7 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $about = about::all();
+        $about          = about::all();
         return view('admin.about.edit',compact('about'));
     }
 
@@ -83,14 +83,14 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'map' => 'required',
-            'body' => 'required',
-            'address' => 'required',
+            'map'      => 'required',
+            'body'     => 'required',
+            'address'  => 'required',
         ]);
-        $about = about::find($id);
-        $about->body = $request->body;
+        $about          = about::find($id);
+        $about->body    = $request->body;
         $about->address = $request->address;
-        $about->map = $request->map;
+        $about->map     = $request->map;
         $about->save();
 
         return redirect(route('about.index'));

@@ -20,7 +20,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plans=plan::all();
+        $plans = plan::all();
         return view('admin.plan.show',compact('plans'));
     }
 
@@ -43,15 +43,15 @@ class PlanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
+            'title'   => 'required',
             'content' => 'required',
-            'class' => 'required',
+            'class'   => 'required',
         ]);
 
-        $plan = new plan;
-        $plan->title       = $request->title;
-        $plan->content    = $request->content;
-        $plan->class       = $request->class;
+        $plan          = new plan;
+        $plan->title   = $request->title;
+        $plan->content = $request->content;
+        $plan->class   = $request->class;
         $plan->save();
 
         return redirect(route('plan.index'));
@@ -90,15 +90,15 @@ class PlanController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'body' => 'required',
+            'title' => 'required',
+            'body'  => 'required',
             'class' => 'required',
         ]);
 
-        $plan = plan::find($id);
-        $plan->title       = $request->title;
-        $plan->content    = $request->body;
-        $plan->class      = $request->class;
+        $plan          = plan::find($id);
+        $plan->title   = $request->title;
+        $plan->content = $request->body;
+        $plan->class   = $request->class;
         $plan->save();
 
         return redirect(route('plan.index'));
@@ -112,7 +112,7 @@ class PlanController extends Controller
      */
     public function destroy($id)
     {
-        $plan=plan::where('id',$id)->first();
+        $plan = plan::where('id',$id)->first();
 
         $plan->delete();
         return redirect()->back();

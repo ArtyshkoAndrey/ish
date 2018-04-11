@@ -49,13 +49,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:admins',
-            'phone' => 'required|numeric',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:admins',
+            'phone'    => 'required|numeric',
             'password' => 'required|string|min:6|confirmed',
         ]);
         $request['password'] = bcrypt($request->password);
-        $user = admin::create($request->all());
+        $user                = admin::create($request->all());
         $user->roles()->sync($request->role);
         return redirect(route('user.index'));
     }
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = admin::find($id);
+        $user  = admin::find($id);
         $roles = role::all();
         return view('admin.user.edit',compact('user','roles'));
     }
@@ -94,11 +94,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required|string|max:255',
+            'name'  => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'required|numeric',
         ]);
-        $request->status? : $request['status']=0;
+        $request->status?: $request['status'] = 0;
         $user = admin::where('id',$id)->update($request->except('_token','_method','role'));
         admin::find($id)->roles()->sync($request->role);
         return redirect(route('user.index'))->with('message','User updated successfully');

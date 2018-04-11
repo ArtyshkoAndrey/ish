@@ -50,8 +50,8 @@ class TagController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'slug' => 'required',
-            ]);
-        $tag = new tag;
+        ]);
+        $tag       = new tag;
         $tag->name = $request->name;
         $tag->slug = $request->slug;
         $tag->save();
@@ -94,8 +94,8 @@ class TagController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'slug' => 'required',
-            ]);
-        $tag = tag::find($id);
+        ]);
+        $tag       = tag::find($id);
         $tag->name = $request->name;
         $tag->slug = $request->slug;
         $tag->save();

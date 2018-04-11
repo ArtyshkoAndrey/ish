@@ -44,7 +44,7 @@ class post extends Model
     public function addView(int $amount = 1)
     {
         $this->timestamps = false;
-        $this->viewed += $amount;
+        $this->viewed    += $amount;
         $this->update();
         $this->timestamps = true;
         return $this;

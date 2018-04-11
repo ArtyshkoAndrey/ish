@@ -45,15 +45,15 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required',
-            'content' => 'required',
-            'icon' => 'required',
+            'name'      => 'required',
+            'content'   => 'required',
+            'icon'      => 'required',
         ]);
 
-        $course = new course;
-        $course->name       = $request->name;
-        $course->content    = $request->content;
-        $course->icon       = $request->icon;
+        $course          = new course;
+        $course->name    = $request->name;
+        $course->content = $request->content;
+        $course->icon    = $request->icon;
         $course->save();
 
         return redirect(route('course.index'));
@@ -78,11 +78,8 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-//        if (Auth::user()->can('course.update')) {
-            $course = course::where('id',$id)->first();
-            return view('admin.courses.edit',compact('course'));
-//        }
-//        return redirect(route('admin.home'));
+        $course = course::where('id',$id)->first();
+        return view('admin.courses.edit',compact('course'));
     }
 
     /**
@@ -95,15 +92,15 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'=>'required',
-            'content' => 'required',
-            'icon' => 'required',
+            'name'      => 'required',
+            'content'   => 'required',
+            'icon'      => 'required',
         ]);
 
-        $course = course::find($id);
-        $course->name       = $request->name;
-        $course->content    = $request->content;
-        $course->icon       = $request->icon;
+        $course          = course::find($id);
+        $course->name    = $request->name;
+        $course->content = $request->content;
+        $course->icon    = $request->icon;
         $course->save();
 
         return redirect(route('course.index'));
@@ -117,8 +114,7 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        $course=course::where('id',$id)->first();
-
+        $course = course::where('id',$id)->first();
         $course->delete();
         return redirect()->back();
     }

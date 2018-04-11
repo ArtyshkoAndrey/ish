@@ -20,7 +20,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers=teacher::all();
+        $teachers = teacher::all();
         return view('admin.teacher.show',compact('teachers'));
     }
 
@@ -43,17 +43,17 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required',
+            'name'       => 'required',
             'profession' => 'required',
-            'content' => 'required',
-            'photo' => 'required'
+            'content'    => 'required',
+            'photo'      => 'required'
         ]);
 
         if ($request->hasFile('photo')) {
-            $path =  public_path().'/upload/teacher/';
-            $file = $request->file('photo');
+            $path     = public_path().'/upload/teacher/';
+            $file     = $request->file('photo');
             $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img      = ImageInt::make($file);
             $img->resize(null, 350, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -62,11 +62,11 @@ class TeacherController extends Controller
             return 'No';
         }
 
-        $teacher = new teacher;
+        $teacher             = new teacher;
         $teacher->name       = $request->name;
         $teacher->content    = $request->content;
         $teacher->profession = $request->profession;
-        $teacher->photo = $filename;
+        $teacher->photo      = $filename;
         $teacher->save();
 
         return redirect(route('teacher.index'));
@@ -114,7 +114,7 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $teacher=teacher::where('id',$id)->first();
+        $teacher = teacher::where('id',$id)->first();
         if(file_exists(public_path().'/upload/teacher/'.$teacher->photo))
             unlink(public_path().'/upload/teacher/'.$teacher->photo);
         $teacher->delete();

@@ -50,8 +50,8 @@ class CategoryController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'slug' => 'required',
-            ]);
-        $category = new category;
+        ]);
+        $category       = new category;
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
@@ -92,10 +92,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'slug' => 'required',
-            ]);
-        $category = category::find($id);
+            'name'     => 'required',
+            'slug'     => 'required',
+        ]);
+        $category       = category::find($id);
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();

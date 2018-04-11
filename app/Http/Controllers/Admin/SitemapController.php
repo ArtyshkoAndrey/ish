@@ -13,14 +13,14 @@ class SitemapController extends Controller
 
     public function index()
     {
-        $posts = post::where('status', 1)->orderBy('updated_at', 'desc')->get();
+        $posts      = post::where('status', 1)->orderBy('updated_at', 'desc')->get();
         $categories = category::all();
-        $tags=tag::all();
+        $tags       = tag::all();
 
         return response()->view('sitemap', [
-            'posts' => $posts,
-            'categories'=>$categories,
-            'tags'=>$tags,
+            'posts'      => $posts,
+            'categories' => $categories,
+            'tags'       => $tags,
         ])->header('Content-Type', 'text/xml');
     }
 }

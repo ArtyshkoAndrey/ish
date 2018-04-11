@@ -49,9 +49,9 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' =>'required|max:50|unique:roles'
-            ]);
-        $role = new role;
+            'name' => 'required|max:50|unique:roles'
+        ]);
+        $role       = new role;
         $role->name = $request->name;
         $role->save();
         $role->permissions()->sync($request->permission);
@@ -77,7 +77,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = role::find($id);
+        $role        = role::find($id);
         $permissions = Permission::all();
         return view('admin.role.edit',compact('role','permissions'));
     }
@@ -92,9 +92,9 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' =>'required|max:50'
-            ]);
-        $role = role::find($id);
+            'name' => 'required|max:50'
+        ]);
+        $role       = role::find($id);
         $role->name = $request->name;
         $role->save();
         $role->permissions()->sync($request->permission);

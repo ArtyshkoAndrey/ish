@@ -16,7 +16,7 @@ class Controller extends BaseController
     public $links, $headers;
 
     public function __construct() {
-        $this->links=link::all();
-        $this->headers=Header::first();
+        $this->links   = link::all();
+        $this->headers = Header::first();
     }
 }

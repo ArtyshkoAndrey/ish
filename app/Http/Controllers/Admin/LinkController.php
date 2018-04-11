@@ -48,11 +48,11 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'icon'=>'required',
+            'icon' => 'required',
             'link' => 'required',
         ]);
 
-        $link = new link;
+        $link       = new link;
         $link->icon = $request->icon;
         $link->link = $request->link;
         $link->save();

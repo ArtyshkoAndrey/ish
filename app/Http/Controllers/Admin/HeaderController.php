@@ -29,7 +29,7 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        $headers=Header::all();
+        $headers = Header::all();
         return view('admin.header.show', compact('headers'));
     }
 
@@ -73,7 +73,7 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-        $header=Header::where('id',$id)->first();
+        $header = Header::where('id',$id)->first();
         return view('admin.header.edit',compact('header'));
     }
 
@@ -86,36 +86,36 @@ class HeaderController extends Controller
      */
     public function update(Request $request, $id) {
 
-        $header=Header::where('id',$id)->first();
-        $header->name=$request->name;
-        $header->title=$request->title;
-        $header->subtitle=$request->subtitle;
+        $header           = Header::where('id',$id)->first();
+        $header->name     = $request->name;
+        $header->title    = $request->title;
+        $header->subtitle = $request->subtitle;
 
         if ($request->hasFile('logo')) {
-            $path =  public_path().'/upload/header/';
-            $file = $request->file('logo');
+            $path       = public_path().'/upload/header/';
+            $file       = $request->file('logo');
             $filename_1 = 'logo.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img        = ImageInt::make($file);
             $img->save($path . $filename_1);
         }else{
-            $temp=Header::where('id', $id)->first();
-            $filename_1=$temp->logo;
+            $temp       = Header::where('id', $id)->first();
+            $filename_1 = $temp->logo;
             unset($temp);
         }
 
         if ( $request->hasFile('background_img') ) {
-            $path =  public_path().'/upload/header/';
-            $file = $request->file('background_img');
+            $path       = public_path().'/upload/header/';
+            $file       = $request->file('background_img');
             $filename_2 = 'background_img.' . $file->getClientOriginalExtension() ?: 'jpg';
-            $img = ImageInt::make($file);
+            $img        = ImageInt::make($file);
             $img->save($path . $filename_2);
         }else{
-            $temp=Header::where('id', $id)->first();
-            $filename_2=$temp->background_img;
+            $temp       = Header::where('id', $id)->first();
+            $filename_2 = $temp->background_img;
             unset($temp);
         }
-        $header->logo=$filename_1;
-        $header->background_img=$filename_2;
+        $header->logo           = $filename_1;
+        $header->background_img = $filename_2;
         $header->save();
 
         return redirect(route('header.index'));
