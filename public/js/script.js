@@ -2,36 +2,21 @@ $(document)
     .ready(function () {
 
         //Для фикс или желаемого размещения меню
-        $('.navbar')
-            .addClass('absolute-bottom');
-        $(window)
-            .bind('scroll', function () {
-                var navHeight = $(window)
-                    .height();
-                if ($(window)
-                    .scrollTop() > navHeight) {
-                    $('.navbar')
-                        .removeClass('absolute-bottom');
-                    $('.navbar')
-                        .addClass('fixed-top');
-                } else {
-                    $('.navbar')
-                        .removeClass('fixed-top');
-                    $('.navbar')
-                        .addClass('absolute-bottom')
-                }
-            });
 
-        //Для фото в фулл экран
-        $(".screen-height")
-            .height($(window)
-                .height());
-        $(window)
-            .resize(function () {
-                $(".screen-height")
-                    .height($(window)
-                        .height());
-            });
+
+        $('.navbar').sticky({
+            topSpacing: 0
+        });
+        $('body').scrollspy({
+            target: '.navbar-custom',
+            offset: 70
+        })  
+
+        $(".screen-height").height($(window).height());
+
+        $(window).resize(function () {
+            $(".screen-height").height($(window).height());
+        });;
 
 
         //Плавный скол при клике в меню и активатор скрола в вниз

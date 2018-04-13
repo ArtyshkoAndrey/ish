@@ -49,7 +49,6 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'slug' => 'required',
         ]);
         $category       = new category;
         $category->name = $request->name;
@@ -93,7 +92,6 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name'     => 'required',
-            'slug'     => 'required',
         ]);
         $category       = category::find($id);
         $category->name = $request->name;

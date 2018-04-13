@@ -4,6 +4,8 @@ namespace App\Model\user;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\user\category_post;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class category extends Model
 {
@@ -20,4 +22,10 @@ class category extends Model
     {
         return category_post::where('category_id', $id)->count();
     }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = Str::slug(mb_substr($this->name, 0, 40));
+    }
+
 }

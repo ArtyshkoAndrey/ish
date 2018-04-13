@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-
+    @include('user.include.menu')
 <!-- Page Content -->
     <section>
         <div class="container">
@@ -49,7 +49,7 @@
                                                     <img src="{{asset('admin\dist\img\avatar5.png')}}" alt="..." class="img-fluid">
                                                 </div>
                                                 <div class="title">
-                                                    <span>{{$top_post->posted_by}}</span>
+                                                    <span>{{$top_post->adminName->name}}</span>
                                                 </div>
                                             </a>
                                             <div class="comments meta-last">
@@ -90,7 +90,7 @@
                                                 <img src="{{asset('admin\dist\img\avatar5.png')}}" alt="..." class="img-fluid">
                                             </div>
                                             <div class="title">
-                                                <span>{{$article->posted_by}}</span>
+                                                <span>{{$article->adminName->name}}</span>
                                             </div>
                                         </a>
                                         <div class="comments meta-last">

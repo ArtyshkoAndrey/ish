@@ -31,6 +31,8 @@
         </a>
     
     </section>
+
+    @include('user.include.menu')
     
     <section class="pfblock pfblock-gray" id="services">
         <div class="container">

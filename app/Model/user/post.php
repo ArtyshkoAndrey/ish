@@ -37,10 +37,12 @@ class post extends Model
     {
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40) . "-" . \Carbon\Carbon::now()->format('dmyHi'), '-');
     }
+
     public function scopeLastArticles($query, $count) {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
 
     }
+    
     public function addView(int $amount = 1)
     {
         $this->timestamps = false;
@@ -48,5 +50,10 @@ class post extends Model
         $this->update();
         $this->timestamps = true;
         return $this;
+    }
+
+    public function adminName()
+    {
+        return $this->belongsTo('App\Model\admin\admin', 'posted_by');
     }
 }

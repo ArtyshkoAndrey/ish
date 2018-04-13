@@ -40,7 +40,7 @@
 
 	              <div class="form-group">
 	                <label for="slug">Slug</label>
-	                <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $category->slug }}">
+	                <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $category->slug }}"ceadonly tabIndex="-1" style="pointer-events: none;" disabled>
 	              </div>
 
 	            <div class="form-group">
