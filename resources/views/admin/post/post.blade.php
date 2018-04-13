@@ -119,7 +119,7 @@
               <input type="submit" class="btn btn-primary">
               <a href='{{ route('post.index') }}' class="btn btn-warning">Назад</a>
             </div>
-            <input type="hidden" name="posted_by" id="posted_by" value="{{Auth::user()->name}}">
+            <input type="hidden" name="posted_by" id="posted_by" value="{{Auth::user()->id}}">
           </form>
         </div>
         <!-- /.box -->
