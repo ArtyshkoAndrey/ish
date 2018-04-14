@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 11 2018 г., 11:18
--- Версия сервера: 5.7.16
--- Версия PHP: 7.1.0
+-- Время создания: Апр 13 2018 г., 11:36
+-- Версия сервера: 5.7.20
+-- Версия PHP: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -199,7 +201,7 @@ CREATE TABLE `headers` (
 --
 
 INSERT INTO `headers` (`id`, `name`, `title`, `subtitle`, `logo`, `background_img`, `created_at`, `updated_at`) VALUES
-(1, '#ИнженернаяШкола', 'Инженерная школа МАОУ \"КУГ № 1 - Универс\"', '123123', 'logo.png', 'background_img.jpg', '2018-03-31 17:00:00', '2018-04-11 04:02:31');
+(1, '#ИнженернаяШкола', 'Инженерная школа МАОУ \"КУГ № 1 - Универс\"', 'Инженерное образование - приоритет - качество - перспектива.', 'logo.png', 'background_img.jpg', '2018-03-31 17:00:00', '2018-04-11 04:02:31');
 
 -- --------------------------------------------------------
 
@@ -421,10 +423,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `subtitle`, `slug`, `body`, `status`, `top`, `posted_by`, `image`, `viewed`, `meta_description`, `meta_keywords`, `created_at`, `updated_at`) VALUES
-(1, 'Инженерная школа открывает двери', '11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего 27 учеников с параллели 8 классов приняли участие в необычном квесте, который...', 'inzhenernaya-shkola-otkryvaet-dveri-0904181242', '<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего&nbsp;27 учеников с параллели 8 классов приняли участие&nbsp;в необычном квесте, который состоял из 5 площадок: физика, математика, информатика, механика, а на последней станции проверялось нетривиальная способность - умение думать.</p>\r\n\r\n<p><br />\r\nПо результатам квеста 25 человек прошли испытания и будут учиться в потоке инженерной школы. А это значит, что у них будет отдельное расписание и режим жизни, в котором их ждут творческие работы, увлекательные эксперименты и опыты, собственное исследование и многое другое!</p>\r\n\r\n<div class=\"slider\"><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/Q81biXosEKNOoEoehmxz.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/jIXgqWtno5sCdwm1zQyR.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/DUBQF8UHwhuEJMKV6u8X.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/YaYpkQJ8TuGtuf6herk1.jpg\" style=\"height:500px; width:750px\" /></div>', 1, NULL, 'Артышко Андрей', 'VKpKqu4wIznjj5cp0PHF.jpg', 12, 'Под', '11', '2018-04-09 05:42:41', '2018-04-09 05:42:41'),
-(2, 'Взгляд в будущее', 'С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников \"Взгляд в будущее\". За три дня на конференции выступили более 200 учеников от 1 до 11 классов', 'vzglyad-v-budushchee-0904181246', '<p>С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников &quot;Взгляд в будущее&quot;. За три дня на конференции выступили более 200 учеников от 1 до 11 классов.<br />\r\n&nbsp;</p>\r\n\r\n<p>7 учеников нашей гимназии из 7-11 классов приняли участие в конференции. Большинство из них блестяще выступили со своими интересными проектами и завоевали призовые места в секциях.<br />\r\n&nbsp;</p>\r\n\r\n<p>Савенкова Ксения 8г, Скоробогатько Анастасия 8г заняли 3 место в секции ИКТ с проектом сайта &quot;Историчя Николаевской слободы города Красноярска&quot; (руководители работы Иовщик Татьяна Анатольевна и Кочерова Мария Викторовна).<br />\r\n&nbsp;</p>\r\n\r\n<p>На секции инженеринг все призовые места были наши:+</p>\r\n\r\n<p>3 место - Горлов Сергей 9б, инженерная школа проект &quot;Умный дом&quot; (руководители Баянов Станислав Сергеевич)</p>\r\n\r\n<p>2 место - Шитиков Кирилл, 11 МИФ проект &quot;Многоступенчатая пушка Гаусса&quot; (руководители Грачев Алексей Сергеевич, Михалев Денис Николаевич)</p>\r\n\r\n<p>1 место - Соболь Дарья, 11 ЛИС проект &quot;Молниевая электростанция&quot; (руководители Беспалов Виталий Владимирович, &nbsp;Соболь Александр Александрович)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Поздравляем победителей &nbsp;- &nbsp;учеников и их Учителей!</p>', 1, NULL, 'Артышко Андрей', 'P2DmaDGLmbGNTvH3u8nc.jpg', 7, '123', '11', '2018-04-09 05:46:27', '2018-04-09 05:46:27'),
-(3, 'Физический фейерверк', 'В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела \"Физический фейерверк\"', 'fizicheskiy-feyerverk-0904181248', '<p>В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела &quot;Физический фейерверк&quot;. На нем ученики инженерной школы продемонстрировали различные опыты, начиная от настоящей лазерной пушки и заканчивая световыми миражами. Но мало того, что ученики сумели провести эти опыты, также они рассказали, как это сделали. Все выступления были уникальны, невероятно красивы, просто завораживали зрителей. Особенно выделились такие опыты как &quot;Лавовая лампа&quot; и &quot;Несмешиааемость жидкостей&quot;. Некоторые опыты удивили своей простотой и невероятно интересной и весёлой подачей, например, &quot;трюки с ковбойским лассо&quot;. А также были яркие и удивительные эксперименты, например, &quot;негорящие деньги&quot;. Все зрители получили бурю эмоций, а многие семиклассники заинтересовались инженерной школой и&nbsp;решили в следующем году туда поступить.</p>\r\n\r\n<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\">\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\"><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/z5WSr6LTrQE\" style=\"position:absolute;top:0;left:0;width:100%;height:100%\" width=\"640\"></iframe></div>\r\n\r\n<p>&nbsp;</p>\r\n</div>', 1, NULL, 'Артышко Андрей', 'Y09W0KzqUCO3FLXOYho3.jpg', 12, '123', '11', '2018-04-09 05:48:36', '2018-04-09 05:56:48'),
-(4, 'Ученики инженерной школы победили в грантовом конкурсе Красноярск2020', '23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020', 'ucheniki-inzhenernoy-shkoly-pobedili-v-gran-0904181258', '<p>23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020, молодежь города разрабатывала и представляла проекты экспертам молодежной политики Красноярска.&nbsp;<br />\r\n<br />\r\nПоздравляем учеников 11 класса инженерной школы Туровца Никиту и Ведерникова Максима с победой.&nbsp;<br />\r\n<br />\r\nПроект Никиты &quot;Dance-pad&quot; по созданию городского клуба танцевальных ритм-игр был поддержан Молодежным центром &quot;Новые имена&quot; и получил финансовую поддержку. Проект &quot;Робоаптекарь&quot; Максима поддержал Центр технического проектирования.&nbsp;<br />\r\n<br />\r\nЖелаем ребятам успехов в реализации своих идей.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/FaaoDMcL70h2Y6DEa0Pg.jpg\" style=\"width:100%\" /><br />\r\n&nbsp;</p>', 1, 1, 'Артышко Андрей', 'VJmG8cPoSylLXGcnUnc3.jpg', 15, '123', '11', '2018-04-09 05:58:56', '2018-04-09 05:58:56');
+(1, 'Инженерная школа открывает двери', '11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего 27 учеников с параллели 8 классов приняли участие в необычном квесте, который...', 'inzhenernaya-shkola-otkryvaet-dveri-0904181242', '<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего&nbsp;27 учеников с параллели 8 классов приняли участие&nbsp;в необычном квесте, который состоял из 5 площадок: физика, математика, информатика, механика, а на последней станции проверялось нетривиальная способность - умение думать.</p>\r\n\r\n<p><br />\r\nПо результатам квеста 25 человек прошли испытания и будут учиться в потоке инженерной школы. А это значит, что у них будет отдельное расписание и режим жизни, в котором их ждут творческие работы, увлекательные эксперименты и опыты, собственное исследование и многое другое!</p>\r\n\r\n<div class=\"slider\"><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/Q81biXosEKNOoEoehmxz.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/jIXgqWtno5sCdwm1zQyR.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/DUBQF8UHwhuEJMKV6u8X.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/YaYpkQJ8TuGtuf6herk1.jpg\" style=\"height:500px; width:750px\" /></div>', 1, NULL, '3', 'VKpKqu4wIznjj5cp0PHF.jpg', 12, 'Под', '11', '2018-04-09 05:42:41', '2018-04-09 05:42:41'),
+(2, 'Взгляд в будущее', 'С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников \"Взгляд в будущее\". За три дня на конференции выступили более 200 учеников от 1 до 11 классов', 'vzglyad-v-budushchee-0904181246', '<p>С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников &quot;Взгляд в будущее&quot;. За три дня на конференции выступили более 200 учеников от 1 до 11 классов.<br />\r\n&nbsp;</p>\r\n\r\n<p>7 учеников нашей гимназии из 7-11 классов приняли участие в конференции. Большинство из них блестяще выступили со своими интересными проектами и завоевали призовые места в секциях.<br />\r\n&nbsp;</p>\r\n\r\n<p>Савенкова Ксения 8г, Скоробогатько Анастасия 8г заняли 3 место в секции ИКТ с проектом сайта &quot;Историчя Николаевской слободы города Красноярска&quot; (руководители работы Иовщик Татьяна Анатольевна и Кочерова Мария Викторовна).<br />\r\n&nbsp;</p>\r\n\r\n<p>На секции инженеринг все призовые места были наши:+</p>\r\n\r\n<p>3 место - Горлов Сергей 9б, инженерная школа проект &quot;Умный дом&quot; (руководители Баянов Станислав Сергеевич)</p>\r\n\r\n<p>2 место - Шитиков Кирилл, 11 МИФ проект &quot;Многоступенчатая пушка Гаусса&quot; (руководители Грачев Алексей Сергеевич, Михалев Денис Николаевич)</p>\r\n\r\n<p>1 место - Соболь Дарья, 11 ЛИС проект &quot;Молниевая электростанция&quot; (руководители Беспалов Виталий Владимирович, &nbsp;Соболь Александр Александрович)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Поздравляем победителей &nbsp;- &nbsp;учеников и их Учителей!</p>', 1, NULL, '3', 'P2DmaDGLmbGNTvH3u8nc.jpg', 7, '123', '11', '2018-04-09 05:46:27', '2018-04-09 05:46:27'),
+(3, 'Физический фейерверк', 'В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела \"Физический фейерверк\"', 'fizicheskiy-feyerverk-0904181248', '<p>В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела &quot;Физический фейерверк&quot;. На нем ученики инженерной школы продемонстрировали различные опыты, начиная от настоящей лазерной пушки и заканчивая световыми миражами. Но мало того, что ученики сумели провести эти опыты, также они рассказали, как это сделали. Все выступления были уникальны, невероятно красивы, просто завораживали зрителей. Особенно выделились такие опыты как &quot;Лавовая лампа&quot; и &quot;Несмешиааемость жидкостей&quot;. Некоторые опыты удивили своей простотой и невероятно интересной и весёлой подачей, например, &quot;трюки с ковбойским лассо&quot;. А также были яркие и удивительные эксперименты, например, &quot;негорящие деньги&quot;. Все зрители получили бурю эмоций, а многие семиклассники заинтересовались инженерной школой и&nbsp;решили в следующем году туда поступить.</p>\r\n\r\n<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\">\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\"><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/z5WSr6LTrQE\" style=\"position:absolute;top:0;left:0;width:100%;height:100%\" width=\"640\"></iframe></div>\r\n\r\n<p>&nbsp;</p>\r\n</div>', 1, NULL, '3', 'Y09W0KzqUCO3FLXOYho3.jpg', 12, '123', '11', '2018-04-09 05:48:36', '2018-04-09 05:56:48'),
+(4, 'Ученики инженерной школы победили в грантовом конкурсе Красноярск2020', '23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020', 'ucheniki-inzhenernoy-shkoly-pobedili-v-gran-0904181258', '<p>23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020, молодежь города разрабатывала и представляла проекты экспертам молодежной политики Красноярска.&nbsp;<br />\r\n<br />\r\nПоздравляем учеников 11 класса инженерной школы Туровца Никиту и Ведерникова Максима с победой.&nbsp;<br />\r\n<br />\r\nПроект Никиты &quot;Dance-pad&quot; по созданию городского клуба танцевальных ритм-игр был поддержан Молодежным центром &quot;Новые имена&quot; и получил финансовую поддержку. Проект &quot;Робоаптекарь&quot; Максима поддержал Центр технического проектирования.&nbsp;<br />\r\n<br />\r\nЖелаем ребятам успехов в реализации своих идей.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/FaaoDMcL70h2Y6DEa0Pg.jpg\" style=\"width:100%\" /><br />\r\n&nbsp;</p>', 1, 1, '3', 'VJmG8cPoSylLXGcnUnc3.jpg', 18, '123', '11', '2018-04-09 05:58:56', '2018-04-09 05:58:56');
 
 -- --------------------------------------------------------
 
@@ -656,81 +658,97 @@ ALTER TABLE `users`
 --
 ALTER TABLE `abouts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `admins`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `admin_role`
 --
 ALTER TABLE `admin_role`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT для таблицы `courses`
 --
 ALTER TABLE `courses`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `galleries`
 --
 ALTER TABLE `galleries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT для таблицы `headers`
 --
 ALTER TABLE `headers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT для таблицы `links`
 --
 ALTER TABLE `links`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
 -- AUTO_INCREMENT для таблицы `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT для таблицы `plans`
 --
 ALTER TABLE `plans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -746,6 +764,7 @@ ALTER TABLE `category_posts`
 --
 ALTER TABLE `post_tags`
   ADD CONSTRAINT `post_tags_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

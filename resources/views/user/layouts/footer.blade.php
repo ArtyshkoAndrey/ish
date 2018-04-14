@@ -85,7 +85,7 @@
             © 2018, Красноярская университетская гимназия №1 «Универс»
         </div>
         <div class="container-fluid" style="font-size: 12px; margin-top: 20px;">
-            Powered by <a href="https://artyshko.ru" target="_blank" style="text-transform: none;">Artyshko Andrey</a>
+            Powered by <a href="https://artyshko.ru" target="_blank" style="text-transform: none;">Fulliton</a>
         </div>
     </div>
     <!--/Copyright-->

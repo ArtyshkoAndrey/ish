@@ -1,8 +1,16 @@
  <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Версия</b> 0.0.2
+      <b>Версия</b> 0.1.2
     </div>
-    <strong>Copyright &copy; 2017-{{ Carbon\carbon::now()->year }} <a href="{{route('index')}}">Инженерная школа</a>.</strong>
+    <div>
+      Powered by
+      <a href="https://artyshko.ru" target="_blank" style="text-transform: none;">Fulliton</a>
+    </div>
+    <div class="text-center">
+      <strong>Copyright &copy; 2017-{{ Carbon\carbon::now()->year }}
+        <a href="{{route('index')}}">Инженерная школа</a>.</strong>
+    </div>
+
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
