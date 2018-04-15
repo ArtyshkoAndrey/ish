@@ -154,7 +154,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        admin::where('id',$id)->delete();
+        $admin=admin::where('id',$id)->first();
+        if(file_exists(public_path().'/upload/admin/photo/'.$admin->photo))
+            unlink(public_path().'/upload/admin/photo/'.$admin->photo);
+        $admin->delete();
         return redirect()->back()->with('message','User is deleted successfully');
     }
 }

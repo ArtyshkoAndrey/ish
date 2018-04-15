@@ -79,7 +79,8 @@ class LinkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $link=link::find($id);
+        return view('admin.link.edit', compact('link'));
     }
 
     /**
@@ -91,7 +92,16 @@ class LinkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'link' => 'required',
+            'icon'  => 'required'
+            ]);
+        $link       = link::find($id);
+        $link->link = $request->link;
+        $link->icon = $request->icon;
+        $link->save();
+
+        return redirect(route('link.index'));
     }
 
     /**
@@ -102,6 +112,7 @@ class LinkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        link::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
