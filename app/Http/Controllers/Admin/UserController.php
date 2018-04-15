@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\admin\admin;
 use App\Model\admin\role;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image as ImageInt;
+use Illuminate\Contracts\Validation\Factory;
 
 class UserController extends Controller
 {
@@ -25,6 +27,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         $users = admin::all();
         return view('admin.user.show',compact('users'));
     }
@@ -54,8 +57,27 @@ class UserController extends Controller
             'phone'    => 'required|numeric',
             'password' => 'required|string|min:6|confirmed',
         ]);
+        
+        if ($request->hasFile('photo')) {
+            $path     = public_path().'/upload/admin/photo/';
+            $file     = $request->file('photo');
+            $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
+            $img      = ImageInt::make($file);
+            $img->resize(null, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path . $filename);
+            $request['photo'] = $filename;
+        }else{
+            $request['photo'] = "avatar.png";
+            $filename = "avatar.png";
+        }
+
         $request['password'] = bcrypt($request->password);
         $user                = admin::create($request->all());
+        $userPhoto = admin::orderby('id', 'decs')->first();
+        admin::where('id', $userPhoto->id)->update(['photo'=> $filename]);
+        unset($userPhoto);
         $user->roles()->sync($request->role);
         return redirect(route('user.index'));
     }
@@ -81,6 +103,9 @@ class UserController extends Controller
     {
         $user  = admin::find($id);
         $roles = role::all();
+        if($user->photo == null) {
+            $user->photo = "avatar.png";
+        }
         return view('admin.user.edit',compact('user','roles'));
     }
 
@@ -98,8 +123,25 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'phone' => 'required|numeric',
         ]);
+
+        if ($request->hasFile('photo')) {
+            $path     = public_path().'/upload/admin/photo/';
+            $file     = $request->file('photo');
+            $filename = str_random(20) .'.' . $file->getClientOriginalExtension() ?: 'jpg';
+            $img      = ImageInt::make($file);
+            $img->resize(null, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($path . $filename);
+        }else{
+            $filename=admin::where('id', $id)->value('photo');
+        }
+
         $request->status?: $request['status'] = 0;
         $user = admin::where('id',$id)->update($request->except('_token','_method','role'));
+        $user = admin::where('id',$id)->first();
+        $user->photo = $filename;
+        $user->save();
         admin::find($id)->roles()->sync($request->role);
         return redirect(route('user.index'))->with('message','User updated successfully');
     }

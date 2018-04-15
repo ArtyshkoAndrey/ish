@@ -41,7 +41,7 @@
                                 <div class="post-footer d-flex flex-column flex-sm-row">
                                     <a href="#" class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar">
-                                            <img src="{{asset('admin\dist\img\avatar5.png')}}" alt="..." class="img-fluid">
+                                            <img src="{{asset('upload/admin/photo/' . $article->adminName->photo )}}" alt="..." class="img-fluid">
                                         </div>
                                         <div class="title">
                                             <span>{{$article->adminName->name}}</span>

@@ -29,7 +29,7 @@
             @include('includes.messages')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('user.store') }}" method="post">
+            <form role="form" action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
               <div class="box-body">
               <div class="col-lg-offset-3 col-lg-6">
@@ -57,7 +57,10 @@
                   <label for="password_confirmation">Повторите пароль</label>
                   <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="confirm passowrd">
                 </div>
-
+                <div class="form-group">
+                    <label for="photo">Основная картинка</label>
+                    <input type="file" name="photo" id="photo">
+                  </div>
                 <div class="form-group">
                   <label for="confirm_passowrd">Статус</label>
                   <div class="checkbox">

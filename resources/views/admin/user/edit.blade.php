@@ -26,11 +26,14 @@
             @include('includes.messages')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('user.update',$user->id) }}" method="post">
+            <form role="form" action="{{ route('user.update',$user->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
               <div class="box-body">
-              <div class="col-lg-offset-3 col-lg-6">
+              <div class="col-lg-3">
+                <img src="{{ asset('upload/admin/photo/' . $user->photo) }}" alt="admin photo" class="img-fluid" width="100%">
+              </div>
+              <div class="col-lg-6">
                 <div class="form-group">
                   <label for="name">Имя пользователя</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="User Name" value="@if (old('name')){{ old('name') }}@else{{ $user->name }}@endif">
@@ -45,9 +48,12 @@
                   <label for="phone">Номер телефона</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="phone" value="@if (old('phone')){{ old('phone') }}@else{{ $user->phone }}@endif">
                 </div>
-
                 <div class="form-group">
-                  <label for="confirm_passowrd">Статуы</label>
+                    <label for="photo">Основная картинка</label>
+                    <input type="file" name="photo" id="photo">
+                  </div>
+                <div class="form-group">
+                  <label for="confirm_passowrd">Статуc</label>
                   <div class="checkbox">
                     <label ><input type="checkbox" name="status" 
                     @if (old('status')==1 || $user->status == 1)
