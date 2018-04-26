@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" href="{{ asset('css/news.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <style>
+        .slider {
+            width: 90%;
+            margin-left: 5%;
+        }
+    </style>
 
 @endsection
 

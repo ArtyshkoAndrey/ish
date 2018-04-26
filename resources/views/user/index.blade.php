@@ -6,6 +6,22 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
+    <style>
+	    #home {
+	background-image: url(" {{ asset('upload/header/' . $headers->background_img) }} ");
+	background-color: #222;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+		 -o-background-size: cover;
+			background-size: cover;
+    padding: 0;
+    position: static;
+}
+
+	</style>
 @endsection
 
 @section('content')
