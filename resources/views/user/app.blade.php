@@ -37,7 +37,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-        <script src="https://artyshko.ru/wp-content/themes/Artyshko_Landing/assets/js/jquery.sticky.js"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript">
             (function (d, w, c) {

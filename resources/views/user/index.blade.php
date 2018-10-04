@@ -6,7 +6,7 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
-    <style>
+	<style>
 	    #home {
 	background-image: url(" {{ asset('upload/header/' . $headers->background_img) }} ");
 	background-color: #222;

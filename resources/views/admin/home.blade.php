@@ -41,6 +41,34 @@
       <!-- /.box-footer-->
     </div>
     <!-- /.box -->
+    
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Реконструкция сайта</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        @if($soon->soon)
+            <p>В данный момент сайт на реконструкции</p>
+            <a href="{{route('admin.soon')}}" class="btn btn-default">Отключить</a>
+        @else
+            <p>В данный момент сайт <strong>не</strong> на реконструкции</p>
+            <a href="{{route('admin.soon')}}" class="btn btn-default">Включить</a>
+        @endif
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+      </div>
+      <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
 
     <!-- Default box -->
     <div class="box">

@@ -5,7 +5,8 @@ $(document)
 
 
         $('.navbar').sticky({
-            topSpacing: 0
+            topSpacing: 0,
+            zIndex: 1000
         });
         $('body').scrollspy({
             target: '.navbar-custom',

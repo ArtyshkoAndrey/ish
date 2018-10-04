@@ -8,6 +8,7 @@ use App\Model\user\tag;
 use App\Model\user\category_post;
 use App\Model\user\category;
 use App\Http\Controllers\Controller;
+use App\Model\user\soon;
 
 class HomeController extends Controller
 {
@@ -70,7 +71,22 @@ class HomeController extends Controller
                 ['name' => 'Посетители', 'data' => $tmpdata['users']]
             ], JSON_UNESCAPED_UNICODE);
             $highcharts = true;
-            return view('admin/home', compact('count_posts', 'viewed_posts', 'popular_post', 'series', 'categories', 'highcharts'));
+            
+            $soon = soon::find(1);
+            
+            return view('admin/home', compact('count_posts', 'viewed_posts', 'popular_post', 'series', 'categories', 'highcharts', 'soon'));
         }
     }
+    public function soon() {
+            $soon = soon::find(1);
+            if($soon->soon) {
+                $soon->soon = 0;
+                $soon->save();
+            }
+            else {
+                $soon->soon = 1;
+                $soon->save();
+            }
+            return redirect('admin/home');
+        }
 }
