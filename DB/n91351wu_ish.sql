@@ -2,10 +2,10 @@
 -- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Апр 19 2018 г., 10:36
--- Версия сервера: 5.7.20
--- Версия PHP: 7.1.12
+-- Хост: localhost
+-- Время создания: Окт 04 2018 г., 17:51
+-- Версия сервера: 5.7.21-20-beget-5.7.21-20-1-log
+-- Версия PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `ish`
+-- База данных: `n91351wu_ish`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,10 @@ SET time_zone = "+00:00";
 --
 -- Структура таблицы `abouts`
 --
+-- Создание: Май 29 2018 г., 11:09
+--
 
+DROP TABLE IF EXISTS `abouts`;
 CREATE TABLE `abouts` (
   `id` int(10) UNSIGNED NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -49,7 +52,10 @@ INSERT INTO `abouts` (`id`, `body`, `address`, `map`, `created_at`, `updated_at`
 --
 -- Структура таблицы `admins`
 --
+-- Создание: Май 29 2018 г., 11:00
+--
 
+DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -67,15 +73,20 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `photo`, `phone`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Артышко Андрей', 'artyshko.andrey@gmail.com', '$2y$10$8KV5zjW2x1hPKXjStQw6YOqAYCqTQ8hGiI7IYm6PmpAvRaWpbQ6Y.', '6CsnKuRZLqJBU939XZP4.jpg', '89233441934', 1, '2018-03-03 17:00:00', '2018-04-19 03:35:27'),
-(4, 'Грачёв Алексей Сергеевич', 'gr9@inbox.ru', '$2y$10$L7kBRhTqGa8ndf5U0QKRBOXPAEiRZs9u/YROu0Q6qEC1Y60NTdW/G', 'IMggK4WfCAlbzAIypzMr.jpg', '89135165345', 1, '2018-04-19 03:34:17', '2018-04-19 03:34:17');
+(2, 'Артышко Андрей', 'artyshko.andrey@gmail.com', '$2y$10$8KV5zjW2x1hPKXjStQw6YOqAYCqTQ8hGiI7IYm6PmpAvRaWpbQ6Y.', '6CsnKuRZLqJBU939XZP4.jpg', '89233441934', 1, '2018-03-03 17:00:00', '2018-04-30 11:20:04'),
+(4, 'Грачёв Алексей Сергеевич', 'gr9@inbox.ru', '$2y$10$L7kBRhTqGa8ndf5U0QKRBOXPAEiRZs9u/YROu0Q6qEC1Y60NTdW/G', 'IMggK4WfCAlbzAIypzMr.jpg', '89135165345', 1, '2018-04-19 03:34:17', '2018-04-19 03:34:17'),
+(5, 'Анна Пархоменко', 'parkhomenko247@mail.ru', '$2y$10$WlZ3F2JbALs5I0G6Qd3HQ..eYDMMu3mB.Yh8whfdK1Z9dO1saHhVy', 'avatar.png', '+79059769791', 1, '2018-04-30 04:14:30', '2018-04-30 04:14:30'),
+(6, 'Lev', 'kami-lev@yandex.ru', '$2y$10$xGaFflkQqIFrZhDo2nnyzexsyL8s7AgPzcRd5PS.eVMEFDK4g7WGW', 'avatar.png', '89504374774', 1, '2018-05-31 02:57:58', '2018-05-31 02:57:58');
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `admin_role`
 --
+-- Создание: Май 29 2018 г., 19:02
+--
 
+DROP TABLE IF EXISTS `admin_role`;
 CREATE TABLE `admin_role` (
   `id` int(10) UNSIGNED NOT NULL,
   `admin_id` int(11) NOT NULL,
@@ -92,23 +103,32 @@ INSERT INTO `admin_role` (`id`, `admin_id`, `role_id`, `created_at`, `updated_at
 (1, 3, 4, NULL, NULL),
 (6, 3, 3, NULL, NULL),
 (7, 1, 1, NULL, NULL),
-(8, 2, 1, NULL, NULL),
-(9, 2, 3, NULL, NULL),
-(10, 2, 4, NULL, NULL),
 (11, 3, 1, NULL, NULL),
 (12, 4, 1, NULL, NULL),
 (13, 4, 3, NULL, NULL),
 (14, 4, 4, NULL, NULL),
 (15, 8, 1, NULL, NULL),
 (16, 12, 3, NULL, NULL),
-(17, 12, 4, NULL, NULL);
+(17, 12, 4, NULL, NULL),
+(18, 5, 1, NULL, NULL),
+(19, 5, 3, NULL, NULL),
+(20, 5, 4, NULL, NULL),
+(21, 2, 1, NULL, NULL),
+(22, 2, 3, NULL, NULL),
+(23, 2, 4, NULL, NULL),
+(24, 6, 1, NULL, NULL),
+(25, 6, 3, NULL, NULL),
+(26, 6, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `categories`
 --
+-- Создание: Май 29 2018 г., 12:54
+--
 
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -122,7 +142,10 @@ CREATE TABLE `categories` (
 --
 -- Структура таблицы `category_posts`
 --
+-- Создание: Май 29 2018 г., 18:03
+--
 
+DROP TABLE IF EXISTS `category_posts`;
 CREATE TABLE `category_posts` (
   `post_id` int(10) UNSIGNED NOT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
@@ -136,7 +159,10 @@ CREATE TABLE `category_posts` (
 --
 -- Структура таблицы `courses`
 --
+-- Создание: Май 29 2018 г., 19:47
+--
 
+DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -151,17 +177,20 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `name`, `icon`, `content`, `created_at`, `updated_at`) VALUES
-(1, 'Электроника', 'icon-energy', 'Lorem ipsum dolor sit amet.', '2018-04-09 05:27:35', '2018-04-09 05:27:35'),
-(2, 'ПОЛИМАТЕМАТИКА', 'icon-notebook', 'Lorem ipsum dolor sit amet.', '2018-04-09 05:28:00', '2018-04-09 05:28:00'),
-(3, 'РОБОТОТЕХНИКА', 'icon-paper-plane', 'Lorem ipsum dolor sit amet.', '2018-04-09 05:28:14', '2018-04-09 05:28:14'),
-(4, 'ОЛИМПИАДНАЯ ПОДГОТОВКА', 'icon-note', 'Lorem ipsum dolor sit amet.', '2018-04-09 05:28:37', '2018-04-09 05:28:37');
+(1, 'Электроника', 'icon-energy', 'Познакомимся с электроникой поближе', '2018-04-09 05:27:35', '2018-04-19 12:24:13'),
+(2, 'ПОЛИМАТЕМАТИКА', 'icon-notebook', 'Единство математики и физики', '2018-04-09 05:28:00', '2018-04-19 12:25:36'),
+(3, 'РОБОТОТЕХНИКА', 'icon-paper-plane', 'Легоконструирование, программирование и многое другое', '2018-04-09 05:28:14', '2018-04-19 12:28:05'),
+(4, 'ОЛИМПИАДНАЯ ПОДГОТОВКА', 'icon-note', 'Подготовим вашего ребёнка по всем нужным направлениям', '2018-04-09 05:28:37', '2018-04-19 12:34:13');
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `galleries`
 --
+-- Создание: Май 29 2018 г., 11:43
+--
 
+DROP TABLE IF EXISTS `galleries`;
 CREATE TABLE `galleries` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -190,7 +219,10 @@ INSERT INTO `galleries` (`id`, `title`, `photo`, `posted_by`, `status`, `created
 --
 -- Структура таблицы `headers`
 --
+-- Создание: Апр 19 2018 г., 07:38
+--
 
+DROP TABLE IF EXISTS `headers`;
 CREATE TABLE `headers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -214,7 +246,10 @@ INSERT INTO `headers` (`id`, `name`, `title`, `subtitle`, `logo`, `background_im
 --
 -- Структура таблицы `links`
 --
+-- Создание: Май 29 2018 г., 13:06
+--
 
+DROP TABLE IF EXISTS `links`;
 CREATE TABLE `links` (
   `id` int(10) UNSIGNED NOT NULL,
   `icon` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -237,7 +272,10 @@ INSERT INTO `links` (`id`, `icon`, `link`, `created_at`, `updated_at`) VALUES
 --
 -- Структура таблицы `migrations`
 --
+-- Создание: Май 29 2018 г., 15:03
+--
 
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -274,7 +312,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 -- Структура таблицы `password_resets`
 --
+-- Создание: Май 29 2018 г., 12:58
+--
 
+DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -286,7 +327,10 @@ CREATE TABLE `password_resets` (
 --
 -- Структура таблицы `permissions`
 --
+-- Создание: Май 29 2018 г., 13:42
+--
 
+DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -316,7 +360,10 @@ INSERT INTO `permissions` (`id`, `name`, `for`, `created_at`, `updated_at`) VALU
 --
 -- Структура таблицы `permission_role`
 --
+-- Создание: Апр 19 2018 г., 07:38
+--
 
+DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE `permission_role` (
   `role_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
@@ -371,7 +418,10 @@ INSERT INTO `permission_role` (`role_id`, `permission_id`) VALUES
 --
 -- Структура таблицы `plans`
 --
+-- Создание: Май 29 2018 г., 18:41
+--
 
+DROP TABLE IF EXISTS `plans`;
 CREATE TABLE `plans` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -386,27 +436,30 @@ CREATE TABLE `plans` (
 --
 
 INSERT INTO `plans` (`id`, `title`, `content`, `class`, `created_at`, `updated_at`) VALUES
-(1, 'Углублённое изучение предметов', 'Lorem ipsum dolor sit amet.', 8, '2018-03-07 17:00:00', '2018-03-28 01:50:34'),
+(1, 'Углублённое изучение предметов', 'Ученик обучается по углублённой системе обучения; охватим все темы и подготовим к поступлению в старшую школу', 8, '2018-03-07 17:00:00', '2018-04-30 11:42:56'),
 (2, 'Моделирование и графика', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:55:46', '2018-03-27 12:55:46'),
 (3, 'Полипредметные интенсивы', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:56:51', '2018-03-27 12:56:51'),
 (4, 'Специализированные курсы', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:57:01', '2018-03-27 12:57:01'),
-(5, 'Лабораторные работы', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:57:12', '2018-03-27 12:57:12'),
-(6, 'Экскурсии, конференции, олимпиады', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:57:24', '2018-03-27 12:57:24'),
-(7, 'Бесплатное обучение', 'Lorem ipsum dolor sit amet.', 8, '2018-03-27 12:57:33', '2018-03-27 12:57:33'),
-(8, 'Углублённое изучение предметов', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:57:49', '2018-03-27 12:57:49'),
-(9, 'Aнглийский', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:57:59', '2018-03-27 12:57:59'),
+(5, 'Лабораторные работы', 'Закрепим все знания на практике', 8, '2018-03-27 12:57:12', '2018-04-30 11:22:44'),
+(6, 'Экскурсии, конференции, олимпиады', 'Расширим кругозор вашего ребёнка, подготовим к конференциям и олимпиадам', 8, '2018-03-27 12:57:24', '2018-04-30 11:44:50'),
+(7, 'Бесплатное обучение', 'Обучение за счёт государства. Идеально подходит для перспективных школьников', 8, '2018-03-27 12:57:33', '2018-04-19 12:36:26'),
+(8, 'Углублённое изучение предметов', 'Ученик обучается по углублённой системе обучения; охватим все темы и подготовим к поступлению в университет', 10, '2018-03-27 12:57:49', '2018-04-30 11:42:44'),
+(9, 'Aнглийский', 'Английский язык является неотъемлемой частью обучения; подготовим к ЕГЭ по английскому языку', 10, '2018-03-27 12:57:59', '2018-04-30 11:24:44'),
 (10, 'Моделирование и графика', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:58:11', '2018-03-27 12:58:11'),
 (11, 'Полипредметные интенсивы', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:58:31', '2018-03-27 12:58:31'),
 (12, 'Специализированные курсы', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:58:47', '2018-03-27 12:58:47'),
-(13, 'Лабораторные работы', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:58:57', '2018-03-27 12:58:57'),
-(14, 'Экскурсии, конференции, олимпиады', 'Lorem ipsum dolor sit amet.', 10, '2018-03-27 12:59:08', '2018-03-27 12:59:08');
+(13, 'Лабораторные работы', 'Закрепим все знании на практике', 10, '2018-03-27 12:58:57', '2018-04-19 12:42:49'),
+(14, 'Экскурсии, конференции, олимпиады', 'Профессионально подготовим к конференция и высшим олимпиадам', 10, '2018-03-27 12:59:08', '2018-04-19 12:39:26');
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `posts`
 --
+-- Создание: Май 29 2018 г., 16:43
+--
 
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -429,17 +482,20 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `subtitle`, `slug`, `body`, `status`, `top`, `posted_by`, `image`, `viewed`, `meta_description`, `meta_keywords`, `created_at`, `updated_at`) VALUES
-(1, 'Инженерная школа открывает двери', '11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего 27 учеников с параллели 8 классов приняли участие в необычном квесте, который...', 'inzhenernaya-shkola-otkryvaet-dveri-0904181242', '<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего&nbsp;27 учеников с параллели 8 классов приняли участие&nbsp;в необычном квесте, который состоял из 5 площадок: физика, математика, информатика, механика, а на последней станции проверялось нетривиальная способность - умение думать.</p>\r\n\r\n<p><br />\r\nПо результатам квеста 25 человек прошли испытания и будут учиться в потоке инженерной школы. А это значит, что у них будет отдельное расписание и режим жизни, в котором их ждут творческие работы, увлекательные эксперименты и опыты, собственное исследование и многое другое!</p>\r\n\r\n<div class=\"slider\"><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/Q81biXosEKNOoEoehmxz.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/jIXgqWtno5sCdwm1zQyR.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/DUBQF8UHwhuEJMKV6u8X.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/YaYpkQJ8TuGtuf6herk1.jpg\" style=\"height:500px; width:750px\" /></div>', 1, NULL, '2', 'VKpKqu4wIznjj5cp0PHF.jpg', 12, 'Под', '11', '2018-04-09 05:42:41', '2018-04-09 05:42:41'),
-(2, 'Взгляд в будущее', 'С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников \"Взгляд в будущее\". За три дня на конференции выступили более 200 учеников от 1 до 11 классов', 'vzglyad-v-budushchee-0904181246', '<p>С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников &quot;Взгляд в будущее&quot;. За три дня на конференции выступили более 200 учеников от 1 до 11 классов.<br />\r\n&nbsp;</p>\r\n\r\n<p>7 учеников нашей гимназии из 7-11 классов приняли участие в конференции. Большинство из них блестяще выступили со своими интересными проектами и завоевали призовые места в секциях.<br />\r\n&nbsp;</p>\r\n\r\n<p>Савенкова Ксения 8г, Скоробогатько Анастасия 8г заняли 3 место в секции ИКТ с проектом сайта &quot;Историчя Николаевской слободы города Красноярска&quot; (руководители работы Иовщик Татьяна Анатольевна и Кочерова Мария Викторовна).<br />\r\n&nbsp;</p>\r\n\r\n<p>На секции инженеринг все призовые места были наши:+</p>\r\n\r\n<p>3 место - Горлов Сергей 9б, инженерная школа проект &quot;Умный дом&quot; (руководители Баянов Станислав Сергеевич)</p>\r\n\r\n<p>2 место - Шитиков Кирилл, 11 МИФ проект &quot;Многоступенчатая пушка Гаусса&quot; (руководители Грачев Алексей Сергеевич, Михалев Денис Николаевич)</p>\r\n\r\n<p>1 место - Соболь Дарья, 11 ЛИС проект &quot;Молниевая электростанция&quot; (руководители Беспалов Виталий Владимирович, &nbsp;Соболь Александр Александрович)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Поздравляем победителей &nbsp;- &nbsp;учеников и их Учителей!</p>', 1, NULL, '4', 'P2DmaDGLmbGNTvH3u8nc.jpg', 7, '123', '11', '2018-04-09 05:46:27', '2018-04-09 05:46:27'),
-(3, 'Физический фейерверк', 'В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела \"Физический фейерверк\"', 'fizicheskiy-feyerverk-0904181248', '<p>В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела &quot;Физический фейерверк&quot;. На нем ученики инженерной школы продемонстрировали различные опыты, начиная от настоящей лазерной пушки и заканчивая световыми миражами. Но мало того, что ученики сумели провести эти опыты, также они рассказали, как это сделали. Все выступления были уникальны, невероятно красивы, просто завораживали зрителей. Особенно выделились такие опыты как &quot;Лавовая лампа&quot; и &quot;Несмешиааемость жидкостей&quot;. Некоторые опыты удивили своей простотой и невероятно интересной и весёлой подачей, например, &quot;трюки с ковбойским лассо&quot;. А также были яркие и удивительные эксперименты, например, &quot;негорящие деньги&quot;. Все зрители получили бурю эмоций, а многие семиклассники заинтересовались инженерной школой и&nbsp;решили в следующем году туда поступить.</p>\r\n\r\n<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\">\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\"><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/z5WSr6LTrQE\" style=\"position:absolute;top:0;left:0;width:100%;height:100%\" width=\"640\"></iframe></div>\r\n\r\n<p>&nbsp;</p>\r\n</div>', 1, NULL, '4', 'Y09W0KzqUCO3FLXOYho3.jpg', 12, '123', '11', '2018-04-09 05:48:36', '2018-04-09 05:56:48'),
-(4, 'Ученики инженерной школы победили в грантовом конкурсе Красноярск2020', '23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020', 'ucheniki-inzhenernoy-shkoly-pobedili-v-gran-0904181258', '<p>23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020, молодежь города разрабатывала и представляла проекты экспертам молодежной политики Красноярска.&nbsp;<br />\r\n<br />\r\nПоздравляем учеников 11 класса инженерной школы Туровца Никиту и Ведерникова Максима с победой.&nbsp;<br />\r\n<br />\r\nПроект Никиты &quot;Dance-pad&quot; по созданию городского клуба танцевальных ритм-игр был поддержан Молодежным центром &quot;Новые имена&quot; и получил финансовую поддержку. Проект &quot;Робоаптекарь&quot; Максима поддержал Центр технического проектирования.&nbsp;<br />\r\n<br />\r\nЖелаем ребятам успехов в реализации своих идей.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://127.0.0.1:8000/upload/post/FaaoDMcL70h2Y6DEa0Pg.jpg\" style=\"width:100%\" /><br />\r\n&nbsp;</p>', 1, 1, '4', 'VJmG8cPoSylLXGcnUnc3.jpg', 21, '123', '11', '2018-04-09 05:58:56', '2018-04-09 05:58:56');
+(1, 'Инженерная школа открывает двери', '11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего 27 учеников с параллели 8 классов приняли участие в необычном квесте, который...', 'inzhenernaya-shkola-otkryvaet-dveri-0904181242', '<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>11.09.2015 прошел запуск Инженерной школы для учащихся 8 классов. Это направление позволит ребятам глубже изучать предметы инженерного направления: математику, физику и информатику. Всего&nbsp;27 учеников с параллели 8 классов приняли участие&nbsp;в необычном квесте, который состоял из 5 площадок: физика, математика, информатика, механика, а на последней станции проверялось нетривиальная способность - умение думать.</p>\r\n\r\n<p><br />\r\nПо результатам квеста 25 человек прошли испытания и будут учиться в потоке инженерной школы. А это значит, что у них будет отдельное расписание и режим жизни, в котором их ждут творческие работы, увлекательные эксперименты и опыты, собственное исследование и многое другое!</p>\r\n\r\n<div class=\"slider\"><img alt=\"\" src=\"http://ishunivers.su/upload/post/Q81biXosEKNOoEoehmxz.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://ishunivers.su/upload/post/jIXgqWtno5sCdwm1zQyR.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://ishunivers.su/upload/post/DUBQF8UHwhuEJMKV6u8X.jpg\" style=\"height:500px; width:750px\" /><img alt=\"\" src=\"http://ishunivers.su/upload/post/YaYpkQJ8TuGtuf6herk1.jpg\" style=\"height:500px; width:750px\" /></div>', 1, NULL, '2', 'VKpKqu4wIznjj5cp0PHF.jpg', 86, 'Под', '11', '2018-04-09 05:42:41', '2018-04-09 05:42:41'),
+(2, 'Взгляд в будущее', 'С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников \"Взгляд в будущее\". За три дня на конференции выступили более 200 учеников от 1 до 11 классов', 'vzglyad-v-budushchee-0904181246', '<p>С 19 по 21 апреля в гимназии № 4 прошла 11я научно-практическая конференция школьников &quot;Взгляд в будущее&quot;. За три дня на конференции выступили более 200 учеников от 1 до 11 классов.<br />\r\n&nbsp;</p>\r\n\r\n<p>7 учеников нашей гимназии из 7-11 классов приняли участие в конференции. Большинство из них блестяще выступили со своими интересными проектами и завоевали призовые места в секциях.<br />\r\n&nbsp;</p>\r\n\r\n<p>Савенкова Ксения 8г, Скоробогатько Анастасия 8г заняли 3 место в секции ИКТ с проектом сайта &quot;Историчя Николаевской слободы города Красноярска&quot; (руководители работы Иовщик Татьяна Анатольевна и Кочерова Мария Викторовна).<br />\r\n&nbsp;</p>\r\n\r\n<p>На секции инженеринг все призовые места были наши:+</p>\r\n\r\n<p>3 место - Горлов Сергей 9б, инженерная школа проект &quot;Умный дом&quot; (руководители Баянов Станислав Сергеевич)</p>\r\n\r\n<p>2 место - Шитиков Кирилл, 11 МИФ проект &quot;Многоступенчатая пушка Гаусса&quot; (руководители Грачев Алексей Сергеевич, Михалев Денис Николаевич)</p>\r\n\r\n<p>1 место - Соболь Дарья, 11 ЛИС проект &quot;Молниевая электростанция&quot; (руководители Беспалов Виталий Владимирович, &nbsp;Соболь Александр Александрович)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Поздравляем победителей &nbsp;- &nbsp;учеников и их Учителей!</p>', 1, NULL, '4', 'P2DmaDGLmbGNTvH3u8nc.jpg', 76, '123', '11', '2018-04-09 05:46:27', '2018-04-09 05:46:27'),
+(3, 'Физический фейерверк', 'В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела \"Физический фейерверк\"', 'fizicheskiy-feyerverk-0904181248', '<p>В субботу, 28 января, в актовом зале, на пятом и шестом уроке инженерная школа провела &quot;Физический фейерверк&quot;. На нем ученики инженерной школы продемонстрировали различные опыты, начиная от настоящей лазерной пушки и заканчивая световыми миражами. Но мало того, что ученики сумели провести эти опыты, также они рассказали, как это сделали. Все выступления были уникальны, невероятно красивы, просто завораживали зрителей. Особенно выделились такие опыты как &quot;Лавовая лампа&quot; и &quot;Несмешиааемость жидкостей&quot;. Некоторые опыты удивили своей простотой и невероятно интересной и весёлой подачей, например, &quot;трюки с ковбойским лассо&quot;. А также были яркие и удивительные эксперименты, например, &quot;негорящие деньги&quot;. Все зрители получили бурю эмоций, а многие семиклассники заинтересовались инженерной школой и&nbsp;решили в следующем году туда поступить.</p>\r\n\r\n<div style=\"page-break-after:always\"><span style=\"display:none\">&nbsp;</span></div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\">\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\"><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/z5WSr6LTrQE\" style=\"position:absolute;top:0;left:0;width:100%;height:100%\" width=\"640\"></iframe></div>\r\n\r\n<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\">&nbsp;</div>\r\n\r\n<p>&nbsp;</p>\r\n</div>', 1, NULL, '4', 'Y09W0KzqUCO3FLXOYho3.jpg', 60, '123', '11', '2018-04-09 05:48:36', '2018-07-15 07:12:20'),
+(4, 'Ученики инженерной школы победили в грантовом конкурсе Красноярск2020', '23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020', 'ucheniki-inzhenernoy-shkoly-pobedili-v-gran-0904181258', '<p>23-26 сентября проходила осенняя сессия грантового конкурса Красноярск2020, молодежь города разрабатывала и представляла проекты экспертам молодежной политики Красноярска.&nbsp;<br />\r\n<br />\r\nПоздравляем учеников 11 класса инженерной школы Туровца Никиту и Ведерникова Максима с победой.&nbsp;<br />\r\n<br />\r\nПроект Никиты &quot;Dance-pad&quot; по созданию городского клуба танцевальных ритм-игр был поддержан Молодежным центром &quot;Новые имена&quot; и получил финансовую поддержку. Проект &quot;Робоаптекарь&quot; Максима поддержал Центр технического проектирования.&nbsp;<br />\r\n<br />\r\nЖелаем ребятам успехов в реализации своих идей.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"http://ishunivers.su/upload/post/FaaoDMcL70h2Y6DEa0Pg.jpg\" style=\"width:100%\" /><br />\r\n&nbsp;</p>', 1, 1, '4', 'VJmG8cPoSylLXGcnUnc3.jpg', 522, '123', '11', '2018-04-09 05:58:56', '2018-04-09 05:58:56');
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `post_tags`
 --
+-- Создание: Апр 19 2018 г., 07:38
+--
 
+DROP TABLE IF EXISTS `post_tags`;
 CREATE TABLE `post_tags` (
   `post_id` int(10) UNSIGNED NOT NULL,
   `tag_id` int(10) UNSIGNED NOT NULL,
@@ -452,7 +508,10 @@ CREATE TABLE `post_tags` (
 --
 -- Структура таблицы `roles`
 --
+-- Создание: Май 29 2018 г., 17:51
+--
 
+DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -472,9 +531,33 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `tags`
+-- Структура таблицы `soons`
+--
+-- Создание: Сен 09 2018 г., 05:53
 --
 
+DROP TABLE IF EXISTS `soons`;
+CREATE TABLE `soons` (
+  `id` int(255) NOT NULL,
+  `soon` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `soons`
+--
+
+INSERT INTO `soons` (`id`, `soon`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `tags`
+--
+-- Создание: Май 29 2018 г., 19:17
+--
+
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -488,7 +571,10 @@ CREATE TABLE `tags` (
 --
 -- Структура таблицы `teachers`
 --
+-- Создание: Май 29 2018 г., 14:42
+--
 
+DROP TABLE IF EXISTS `teachers`;
 CREATE TABLE `teachers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -513,7 +599,10 @@ INSERT INTO `teachers` (`id`, `name`, `profession`, `content`, `photo`, `created
 --
 -- Структура таблицы `users`
 --
+-- Создание: Май 29 2018 г., 16:59
+--
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -637,6 +726,12 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `soons`
+--
+ALTER TABLE `soons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `tags`
 --
 ALTER TABLE `tags`
@@ -669,13 +764,13 @@ ALTER TABLE `abouts`
 -- AUTO_INCREMENT для таблицы `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `admin_role`
 --
 ALTER TABLE `admin_role`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
@@ -736,6 +831,12 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `soons`
+--
+ALTER TABLE `soons`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `tags`
